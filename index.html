@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HanyaRoyan - Prompt Engineer & Programmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* VARIABEL KONFIGURASI */
+        :root {
+            /* Data yang bisa dikonfigurasi */
+            --profile-name: "HanyaRoyan";
+            --full-name: "M.Yasir nur Royan";
+            --nickname: "Royan";
+            --phone-number: "085728760194";
+            --google-drive-link: "https://drive.google.com/drive/folders/18OshPpS7TdJMH4yWlhVWSoT6owRD2S1s?usp=drive_link";
+            --photo-ratio: 9/16; /* Rasio foto profil */
+            
+            /* Warna tema terang */
+            --light-bg: #f8f9fa;
+            --light-text: #212529;
+            --light-primary: #1a73e8;
+            --light-secondary: #e8f0fe;
+            --light-card: #ffffff;
+            --light-shadow: rgba(0, 0, 0, 0.1);
+            
+            /* Warna tema gelap */
+            --dark-bg: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            --dark-text: #e9ecef;
+            --dark-primary: #4cc9f0;
+            --dark-secondary: #3a0ca3;
+            --dark-card: rgba(30, 30, 46, 0.7);
+            --dark-shadow: rgba(0, 0, 0, 0.3);
+            --dark-accent: #ff4757; /* Aksen merah untuk tema gelap */
+        }
+
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body.dark-theme {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: var(--light-card);
+            box-shadow: 0 2px 10px var(--light-shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .dark-theme .navbar {
+            background: var(--dark-card);
+            box-shadow: 0 2px 15px var(--dark-shadow);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dark-theme .logo {
+            background: var(--dark-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .contact-btn {
+            background: var(--light-primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #0d62c9;
+        }
+
+        .dark-theme .contact-btn {
+            background: var(--dark-accent);
+        }
+
+        .dark-theme .contact-btn:hover {
+            background: #ff6b81;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            padding: 2rem;
+        }
+
+        /* PERBAIKAN UTAMA: TATA LETAK PROFESIONAL */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            padding: 3rem 0 4rem 0;
+            min-height: 400px;
+        }
+
+        .hero-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 2rem; /* Posisi teks lebih ke atas */
+        }
+
+        .typing-animation {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran lebih besar */
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+            align-self: flex-start; /* Rata kiri */
+            text-align: left;
+            animation: none !important;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            background: var(--light-primary);
+            margin-left: 5px;
+            animation: blink 1s infinite !important;;
+            box-shadow: none !important;
+        }
+
+        .dark-theme .typing-cursor {
+            background: var(--dark-accent);
+            animation: blink 1s infinite !important;
+            box-shadow: none !important;
+        }
+
+        /* FOTO PROFIL DI KANAN - PROFESIONAL */
+        .hero-image {
+            flex: 0 0 28%;
+            max-width: 280px;
+            min-width: 200px;
+            aspect-ratio: var(--photo-ratio);
+            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            margin-top: 0;
+            align-self: flex-start; /* Sejajar dengan teks di kiri */
+        }
+
+        .hero-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dark-theme .hero-image {
+            background: linear-gradient(45deg, #2d2d42, #3d3d5a);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        .dark-theme .zoom-controls {
+            background: rgba(30, 30, 46, 0.8);
+        }
+
+        .zoom-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--light-text);
+            padding: 5px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .zoom-btn {
+            color: var(--dark-text);
+        }
+
+        .dark-theme .zoom-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background: var(--light-card);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 10px 30px var(--light-shadow);
+            position: relative;
+        }
+
+        .dark-theme .about-section {
+            background: var(--dark-card);
+            box-shadow: 0 10px 30px var(--dark-shadow);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--light-primary);
+            border-radius: 2px;
+        }
+
+        .dark-theme .section-title::after {
+            background: var(--dark-accent);
+        }
+
+        .about-content {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .highlight {
+            color: var(--light-primary);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .dark-theme .highlight {
+            color: var(--dark-accent);
+        }
+
+        .highlight:hover::after {
+            content: 'Klik untuk menyalin nomor';
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--light-text);
+            color: var(--light-card);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        .dark-theme .highlight:hover::after {
+            background: var(--dark-text);
+            color: var(--dark-card);
+        }
+
+        /* SKILLS SECTION */
+        .skills-section {
+            background: var(--light-card);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 10px 30px var(--light-shadow);
+        }
+
+        .dark-theme .skills-section {
+            background: var(--dark-card);
+            box-shadow: 0 10px 30px var(--dark-shadow);
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--light-secondary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .dark-theme .skill-card {
+            background: rgba(58, 12, 163, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--light-primary);
+        }
+
+        .dark-theme .skill-icon {
+            color: var(--dark-accent);
+        }
+
+        .skill-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* BUTTONS SECTION */
+        .buttons-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-btn {
+            background: var(--light-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-5px);
+            background: #0d62c9;
+        }
+
+        .dark-theme .portfolio-btn {
+            background: var(--dark-accent);
+        }
+
+        .dark-theme .portfolio-btn:hover {
+            background: #ff6b81;
+        }
+
+        /* PAGES */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* WORKS PAGE */
+        .gallery-section {
+            padding: 2rem 0;
+        }
+
+        .gallery-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--light-primary);
+            border-radius: 2px;
+        }
+
+        .dark-theme .gallery-title::after {
+            background: var(--dark-accent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1/1;
+            background: #e0e0e0;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0) rotateY(0) translateZ(0);
+        }
+
+        .gallery-item:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-15px) translateZ(20px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-theme .gallery-item {
+            background: #2d2d42;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-section {
+            padding: 2rem 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .drive-link {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .drive-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #4285F4;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .drive-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem auto;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+        }
+
+        /* GAMEDEV PAGE */
+        .gamedev-content {
+            background: var(--light-card);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px var(--light-shadow);
+        }
+
+        .dark-theme .gamedev-content {
+            background: var(--dark-card);
+            box-shadow: 0 10px 30px var(--dark-shadow);
+        }
+
+        .gamedev-text {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .member-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .member-item {
+            padding: 1.2rem 1.8rem;
+            margin: 1rem 0;
+            background: var(--light-secondary);
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .member-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .member-item {
+            background: rgba(58, 12, 163, 0.3);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .member-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .member-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+
+        .member-role {
+            font-weight: 500;
+            color: var(--light-primary);
+            background: rgba(26, 115, 232, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        .dark-theme .member-role {
+            color: var(--dark-accent);
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: var(--dark-accent);
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-theme .theme-toggle {
+            background: var(--dark-accent);
+        }
+
+        .theme-toggle i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* NOTIFICATION */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--light-card);
+            color: var(--light-text);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notification.active {
+            transform: translateX(0);
+        }
+
+        .dark-theme .notification {
+            background: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        /* ANIMATIONS */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes typingPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes cursorGlow {
+            0% { box-shadow: 0 0 5px var(--light-primary); }
+            50% { box-shadow: 0 0 20px var(--light-primary), 0 0 30px var(--light-primary); }
+            100% { box-shadow: 0 0 5px var(--light-primary); }
+        }
+
+        .dark-theme .typing-animation {
+            animation: typingPulse 2s ease-in-out infinite;
+        }
+
+        .typing-cursor {
+            animation: blink 1s infinite, cursorGlow 2s ease-in-out infinite;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: unset;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+            
+            .hero-image {
+                width: 200px;
+                max-width: 200px;
+                margin: 0;
+                order: 2; /* Foto di bawah teks di mobile */
+            }
+            
+            .hero-text {
+                padding-top: 0;
+                order: 1;
+            }
+            
+            .typing-animation {
+                font-size: 2rem;
+                text-align: left;
+            }
+            
+            .buttons-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-grid, .project-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+
+            .skills-container {
+                gap: 1rem;
+            }
+
+            .skill-card {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+                margin-top: 80px;
+            }
+            
+            .about-section, .gamedev-content, .skills-section {
+                padding: 1.5rem;
+            }
+            
+            .typing-animation {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .portfolio-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .skill-card {
+                width: 100%;
+            }
+
+            .member-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .member-role {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/icons/logo-hr.png" alt="Logo HR">
+        </div>
+        <div class="nav-links">
+            <button class="contact-btn" id="contactBtn">
+                <i class="fas fa-phone-alt"></i> Contact Me
+            </button>
+        </div>
+    </nav>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Nomor telepon disalin ke clipboard!</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Page -->
+        <div class="page active" id="homePage">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <!-- Teks di sisi kiri agak ke atas -->
+                <div class="hero-text">
+                    <div class="typing-animation" id="typingText">
+                        Hi! I'm <span style="color: var(--light-primary);" class="dark-theme-color">HanyaRoyan</span>, a prompt engineer
+                    </div>
+                    <div class="about-content" style="text-align: left; max-width: 600px;">
+                        <p>Website ini dibuat menggunakan AI</p>
+                    </div>
+                </div>
+                
+                <!-- Foto di sisi kanan -->
+                <div class="hero-image">
+                    <img src="assets/images/foto-ku.png" alt="Foto Profil HanyaRoyan" id="profilePhoto">
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" id="zoomIn"><i class="fas fa-plus"></i></button>
+                        <button class="zoom-btn" id="zoomOut"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about-section">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-content">
+                    Hallo! Namaku <strong>M.Yasir nur Royan</strong> atau bisa di panggil <strong>Royan</strong>. Aku dulunya adalah pembuat render Minecraft lalu beralih menjadi animator gamedev dan sekarang menjadi programmer di Keju Manis Studio. Jika kau tertarik untuk mengobrol dengan ku, aku selalu ada di kelas C4.3 atau kau bisa <span class="highlight" id="phoneHighlight">kontak aku</span>.
+                </p>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills-section">
+                <h2 class="section-title">Keahlian Saya</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="skill-title">Programming</h3>
+                        <p>html, rpy, C#</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="skill-title">Game Development</h3>
+                        <p>Unity, Ren'py</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3 class="skill-title">3D Modeling</h3>
+                        <p>Blender</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="skill-title">Animation</h3>
+                        <p>mine-imator, blender</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="buttons-section">
+                <button class="portfolio-btn" data-page="worksPage">
+                    <i class="fas fa-folder-open"></i> Karya Ku
+                </button>
+                <button class="portfolio-btn" data-page="gamedevPage">
+                    <i class="fas fa-gamepad"></i> Tentang Gamedev
+                </button>
+            </div>
+        </div>
+
+        <!-- Works Page -->
+        <div class="page" id="worksPage">
+            <section class="gallery-section">
+                <h2 class="gallery-title">Render Minecraft Terbaikku</h2>
+                <div class="gallery-grid">
+                    <!-- Hanya 3 render -->
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/render-1.jpg" alt="Render Minecraft 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/render-2.jpg" alt="Render Minecraft 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/gallery/render-3.jpg" alt="Render Minecraft 3">
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2 class="gallery-title">Project Game Development</h2>
+                <div class="project-grid">
+                    <!-- Hanya 2 project -->
+                    <div class="gallery-item">
+                        <img src="assets/images/projects/project-1.jpg" alt="Project 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/projects/project-2.jpg" alt="Project 2">
+                    </div>
+                </div>
+            </section>
+
+            <div class="drive-link">
+                <a href="https://drive.google.com/drive/folders/18OshPpS7TdJMH4yWlhVWSoT6owRD2S1s?usp=drive_link" class="drive-btn" target="_blank">
+                    <i class="fab fa-google-drive"></i> Lihat Semua Karya di Google Drive
+                </a>
+            </div>
+
+            <button class="back-btn" data-page="homePage">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </button>
+        </div>
+
+        <!-- GAMEDEV PAGE -->
+        <div class="page" id="gamedevPage">
+            <div class="gamedev-content">
+                <h2 class="section-title">Tentang Gamedev</h2>
+                <p class="gamedev-text">
+                    Game development adalah sebuah ekstra kulikuler di sekolah SMK Muhammadiyah 1 Sukoharjo. Goal yang ingin dicapai saat ini adalah membuat game VR. Jika kamu tertarik ingin gabung, hubungi aku.
+                </p>
+                
+                <h3 style="text-align:center; margin-bottom:1.5rem;">Anggota Tim Gamedev:</h3>
+                <ul class="member-list">
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Feby</span>
+                            <span class="member-desc">Penulis cerita utama, bertanggung jawab atas alur cerita dan karakter</span>
+                        </div>
+                        <span class="member-role">Story Writer - Ketua</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Qeno</span>
+                            <span class="member-desc">Membantu pengembangan cerita dan karakter</span>
+                        </div>
+                        <span class="member-role">Story Writer - Wakil</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Daffa.js</span>
+                            <span class="member-desc">Hasil tergantung dengan gaji yg diberikan</span>
+                        </div>
+                        <span class="member-role">Programmer</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Daffa pedo</span>
+                            <span class="member-desc">Mendesain UI dan aset 2D</span>
+                        </div>
+                        <span class="member-role">Designer</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Royan</span>
+                            <span class="member-desc">Programmer pemula sekaligus animator</span>
+                        </div>
+                        <span class="member-role">Programmer</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Rakai</span>
+                            <span class="member-desc">Membuat model 3D karakter dan benda</span>
+                        </div>
+                        <span class="member-role">3D Modeler</span>
+                    </li>
+                    <li class="member-item">
+                        <div class="member-info">
+                            <span class="member-name">Geysar</span>
+                            <span class="member-desc">ordinary programmer(kagatau gjweh)</span>
+                        </div>
+                        <span class="member-role">Programmer</span>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="back-btn" data-page="homePage">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </button>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content" id="modalImageContent">
+            <!-- Image will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // ===============================
+        // KONFIGURASI MUDAH
+        // ===============================
+        const config = {
+            profileName: "HanyaRoyan",
+            fullName: "M.Yasir nur Royan",
+            nickname: "Royan",
+            phoneNumber: "085728760194",
+            googleDriveLink: "https://drive.google.com/drive/folders/18OshPpS7TdJMH4yWlhVWSoT6owRD2S1s?usp=drive_link",
+            photoRatio: 9/16
+        };
+        
+        // ===============================
+        // INISIALISASI APLIKASI
+        // ===============================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Jalankan animasi ketik
+            simulateTyping();
+            
+            // Terapkan tema dari localStorage
+            applySavedTheme();
+            
+            // Setup gallery event listeners
+            setupGallery();
+        });
+
+        // ===============================
+        // FUNGSI UTAMA
+        // ===============================
+        function setupEventListeners() {
+            // Toggle tema
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            
+            // Navigasi halaman
+            document.querySelectorAll('.portfolio-btn, .back-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pageId = this.getAttribute('data-page');
+                    navigateToPage(pageId);
+                });
+            });
+            
+            // Salin nomor telepon
+            document.getElementById('contactBtn').addEventListener('click', copyPhoneNumber);
+            document.getElementById('phoneHighlight').addEventListener('click', copyPhoneNumber);
+            
+            // Kontrol zoom gambar
+            document.getElementById('zoomIn').addEventListener('click', () => zoomImage(0.1));
+            document.getElementById('zoomOut').addEventListener('click', () => zoomImage(-0.1));
+            
+            // Tutup modal
+            document.querySelector('.modal-close').addEventListener('click', closeImageModal);
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) closeImageModal();
+            });
+        }
+        
+        function setupGallery() {
+            // Gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    openImageModal(imgSrc);
+                });
+            });
+        }
+
+        // ===============================
+        // FUNGSI UTILITAS
+        // ===============================
+        function simulateTyping() {
+            const textElement = document.getElementById('typingText');
+            const texts = [
+                "Hi! I'm HanyaRoyan, a prompt engineer",
+                "Hi! I'm HanyaRoyan, a game developer",
+                "Hi! I'm HanyaRoyan, a stupid coder",
+                "Hi! I'm HanyaRoyan, an animator"
+            ];
+            
+            let textIndex = 0;
+            let i = 0;
+            let isDeleting = false;
+            let isPaused = false;
+            let pauseCount = 0;
+            const pauseDuration = 1;
+            
+            // Variasi kecepatan mengetik untuk efek lebih realistis
+            function getRandomDelay() {
+                const delays = [10, 30, 100, 20, 50, 80, 20];
+                return delays[Math.floor(Math.random() * delays.length)];
+            }
+            
+            // Efek visual mengetik (tanpa glow)
+            function addTypingEffect() {
+            }
+            
+            // Efek backspace yang lebih realistis
+            function addBackspaceEffect() {
+                
+            }
+            
+            // Animasi utama dengan multiple texts
+            function typeWriter() {
+                const currentText = texts[textIndex];
+                
+                if (isPaused) {
+                    pauseCount++;
+                    if (pauseCount >= pauseDuration) {
+                        isPaused = false;
+                        pauseCount = 0;
+                    }
+                    setTimeout(typeWriter, 300);
+                    return;
+                }
+                
+                const displayText = currentText.substring(0, i);
+                
+                // Update teks dengan efek warna untuk nama
+                if (displayText.includes('HanyaRoyan')) {
+                    const beforeName = displayText.substring(0, displayText.indexOf('HanyaRoyan'));
+                    const namePart = displayText.substring(displayText.indexOf('HanyaRoyan'), displayText.indexOf('HanyaRoyan') + 10);
+                    const afterName = displayText.substring(displayText.indexOf('HanyaRoyan') + 10);
+                    
+                    textElement.innerHTML = beforeName + 
+                        '<span style="color: var(--light-primary); font-weight: 800;">' + namePart + '</span>' + afterName;
+                } else {
+                    textElement.innerHTML = displayText;
+                }
+                
+                
+                // Efek mengetik dengan variasi kecepatan yang lebih natural
+                if (!isDeleting && i < currentText.length) {
+                    addTypingEffect();
+                    i++;
+                    setTimeout(typeWriter, getRandomDelay());
+                } else if (isDeleting && i > 0) {
+                    addBackspaceEffect();
+                    i--;
+                    setTimeout(typeWriter, 40);
+                } else {
+                    // Pause sebelum mulai menghapus atau mengetik berikutnya
+                    if (!isDeleting) {
+                        isPaused = true;
+                        isDeleting = true;
+                        setTimeout(typeWriter, 700);
+                    } else {
+                        isPaused = true;
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(typeWriter, 700);
+                    }
+                }
+            }
+            typeWriter();
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const icon = document.querySelector('.theme-toggle i');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function applySavedTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-theme');
+                document.querySelector('.theme-toggle i').classList.remove('fa-moon');
+                document.querySelector('.theme-toggle i').classList.add('fa-sun');
+            }
+        }
+
+        function navigateToPage(pageId) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Tampilkan halaman yang diminta
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll ke atas
+            window.scrollTo(0, 0);
+        }
+
+        function copyPhoneNumber() {
+            navigator.clipboard.writeText(config.phoneNumber)
+                .then(() => {
+                    showNotification('Nomor telepon disalin ke clipboard!');
+                })
+                .catch(err => {
+                    showNotification('Gagal menyalin nomor telepon');
+                    console.error('Gagal menyalin teks: ', err);
+                });
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.classList.add('active');
+            
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+
+        function zoomImage(direction) {
+            const profilePhoto = document.getElementById('profilePhoto');
+            const currentScale = parseFloat(getComputedStyle(profilePhoto).transform.split(',')[3]) || 1;
+            const newScale = Math.max(0.5, Math.min(2, currentScale + direction));
+            
+            profilePhoto.style.transform = `scale(${newScale})`;
+        }
+
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalContent = document.getElementById('modalImageContent');
+            
+            modalContent.innerHTML = `<img src="${imgSrc}" alt="Preview" style="max-width:100%; max-height:80vh; border-radius:10px;">`;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>

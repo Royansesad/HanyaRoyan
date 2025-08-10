@@ -1,2 +1,2 @@
 # HanyaRoyan
-sebuah website portofolio
+sebuah website portofolio yg menjelaskan tentang diriku

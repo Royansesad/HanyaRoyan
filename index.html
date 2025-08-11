@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HanyaRoyan - Portofolio</title>
+
+    <!-- favicon utk tab browser -->
+     <link rel="icon" href="assets/icons/logo-hr.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icons/logo-hr.png">
+    <!-- Metadata untuk hasil pencarian -->
+    <meta property="og:title" content="HanyaRoyan - Portofolio">
+    <meta property="og:description" content="Portofolio HanyaRoyan - Game Developer & Animator">
+    <meta property="og:image" content="assets/icons/logo-hr.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/icons/logo-hr.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -26,13 +36,13 @@
             --light-shadow: rgba(0, 0, 0, 0.1);
             
             /* Warna tema gelap */
-            --dark-bg: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            --dark-bg: linear-gradient(135deg, #0a0a0a, #1a1a2e, #32004e 80%, #070044 100%);
             --dark-text: #e9ecef;
             --dark-primary: #4cc9f0;
             --dark-secondary: #3a0ca3;
             --dark-card: rgba(30, 30, 46, 0.7);
             --dark-shadow: rgba(0, 0, 0, 0.3);
-            --dark-accent: #ff4757; /* Aksen merah untuk tema gelap */
+            --dark-accent: #ff1c2f; /* Aksen merah untuk tema gelap */
         }
 
         /* RESET & BASE STYLES */
@@ -146,7 +156,7 @@
         .hero-section {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 3rem;
             padding: 3rem 0 4rem 0;
             min-height: 400px;
@@ -157,48 +167,68 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 2rem; /* Posisi teks lebih ke atas */
+            padding-top: 0;
         }
 
-        .typing-animation {
-            font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran lebih besar */
+        .static-text {
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             line-height: 1.2;
             position: relative;
-            align-self: flex-start; /* Rata kiri */
+            align-self: flex-start;
             text-align: left;
-            animation: none !important;
+        }
+
+        .name-highlight {
+            color: var(--light-primary);
+        }
+
+        .dark-theme .name-highlight {
+            color: var(--dark-accent);
+        }
+
+        .typing-container {
+            display: flex;
+            align-items: center;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 600;
+            min-height: 2.8rem;
+        }
+
+        .typing-text {
+            color: var(--light-text);
+        }
+
+        .dark-theme .typing-text {
+            color: var(--dark-text);
         }
 
         .typing-cursor {
             display: inline-block;
             width: 3px;
+            height: 2.5rem;
             background: var(--light-primary);
-            margin-left: 5px;
-            animation: blink 1s infinite !important;;
-            box-shadow: none !important;
+            margin-left: 3px;
+            animation: blink 1s steps(1) infinite;
         }
 
         .dark-theme .typing-cursor {
             background: var(--dark-accent);
-            animation: blink 1s infinite !important;
-            box-shadow: none !important;
         }
 
         /* FOTO PROFIL DI KANAN - PROFESIONAL */
         .hero-image {
-            flex: 0 0 28%;
-            max-width: 280px;
-            min-width: 200px;
+            flex: 0 0 35%;
+            max-width: 320px;
+            min-width: 250px;
             aspect-ratio: var(--photo-ratio);
-            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
             border-radius: 15px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            margin-top: 0;
-            align-self: flex-start; /* Sejajar dengan teks di kiri */
+            align-self: flex-start;
+            background: white;
         }
 
         .hero-image:hover {
@@ -211,54 +241,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
         }
 
         .dark-theme .hero-image {
-            background: linear-gradient(45deg, #2d2d42, #3d3d5a);
+            background: #2d2d42;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .zoom-controls {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 5px 10px;
-            border-radius: 20px;
-            z-index: 10;
-        }
-
-        .dark-theme .zoom-controls {
-            background: rgba(30, 30, 46, 0.8);
-        }
-
-        .zoom-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--light-text);
-            padding: 5px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .zoom-btn:hover {
-            background: rgba(0,0,0,0.1);
-        }
-
-        .dark-theme .zoom-btn {
-            color: var(--dark-text);
-        }
-
-        .dark-theme .zoom-btn:hover {
-            background: rgba(255,255,255,0.1);
+        .dark-theme .hero-image img {
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
         }
 
         /* ABOUT SECTION */
@@ -750,8 +742,8 @@
 
         /* ANIMATIONS */
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
 
         @keyframes fadeIn {
@@ -759,56 +751,31 @@
             to { opacity: 1; }
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes typingPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes cursorGlow {
-            0% { box-shadow: 0 0 5px var(--light-primary); }
-            50% { box-shadow: 0 0 20px var(--light-primary), 0 0 30px var(--light-primary); }
-            100% { box-shadow: 0 0 5px var(--light-primary); }
-        }
-
-        .dark-theme .typing-animation {
-            animation: typingPulse 2s ease-in-out infinite;
-        }
-
-        .typing-cursor {
-            animation: blink 1s infinite, cursorGlow 2s ease-in-out infinite;
-        }
-
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .hero-section {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
                 min-height: unset;
                 gap: 2rem;
                 padding: 2rem 0;
             }
             
             .hero-image {
-                width: 200px;
-                max-width: 200px;
+                width: 40%;
+                max-width: 250px;
                 margin: 0;
-                order: 2; /* Foto di bawah teks di mobile */
             }
             
             .hero-text {
                 padding-top: 0;
-                order: 1;
             }
             
-            .typing-animation {
-                font-size: 2rem;
-                text-align: left;
+            .static-text {
+                font-size: 1.8rem;
+            }
+            
+            .typing-container {
+                font-size: 1.5rem;
             }
             
             .buttons-section {
@@ -829,6 +796,29 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .hero-text {
+                align-items: center;
+            }
+            
+            .static-text, .typing-container {
+                align-self: center;
+                text-align: center;
+            }
+            
+            .hero-image {
+                width: 60%;
+                max-width: 300px;
+                margin-top: 2rem;
+            }
+        }
+
         @media (max-width: 600px) {
             .navbar {
                 padding: 1rem;
@@ -843,8 +833,12 @@
                 padding: 1.5rem;
             }
             
-            .typing-animation {
+            .static-text {
                 font-size: 1.8rem;
+            }
+            
+            .typing-container {
+                font-size: 1.4rem;
             }
             
             .section-title {
@@ -875,6 +869,25 @@
                 align-self: flex-end;
             }
         }
+
+        @media (max-width: 480px) {
+            .static-text {
+                font-size: 1.5rem;
+            }
+            
+            .typing-container {
+                font-size: 1.2rem;
+                min-height: 2rem;
+            }
+            
+            .typing-cursor {
+                height: 1.8rem;
+            }
+            
+            .hero-image {
+                width: 70%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -902,12 +915,16 @@
         <div class="page active" id="homePage">
             <!-- Hero Section -->
             <section class="hero-section">
-                <!-- Teks di sisi kiri agak ke atas -->
+                <!-- Teks di sisi kiri -->
                 <div class="hero-text">
-                    <div class="typing-animation" id="typingText">
-                        Hi! I'm <span style="color: var(--light-primary);" class="dark-theme-color">HanyaRoyan</span>, a prompt engineer
+                    <div class="static-text">
+                        Hi! I'm <span class="name-highlight">HanyaRoyan</span>
                     </div>
-                    <div class="about-content" style="text-align: left; max-width: 600px;">
+                    <div class="typing-container">
+                        <span id="professionText" class="typing-text">a prompt engineer</span>
+                        <span class="typing-cursor"></span>
+                    </div>
+                    <div class="about-content" style="text-align: left; max-width: 600px; margin-top: 1rem;">
                         <p>Website ini dibuat menggunakan AI</p>
                     </div>
                 </div>
@@ -915,10 +932,6 @@
                 <!-- Foto di sisi kanan -->
                 <div class="hero-image">
                     <img src="assets/images/foto-ku.png" alt="Foto Profil HanyaRoyan" id="profilePhoto">
-                    <div class="zoom-controls">
-                        <button class="zoom-btn" id="zoomIn"><i class="fas fa-plus"></i></button>
-                        <button class="zoom-btn" id="zoomOut"><i class="fas fa-minus"></i></button>
-                    </div>
                 </div>
             </section>
 
@@ -1118,8 +1131,8 @@
             // Setup event listeners
             setupEventListeners();
             
-            // Jalankan animasi ketik
-            simulateTyping();
+            // Jalankan animasi profesi
+            animateProfessions();
             
             // Terapkan tema dari localStorage
             applySavedTheme();
@@ -1147,10 +1160,6 @@
             document.getElementById('contactBtn').addEventListener('click', copyPhoneNumber);
             document.getElementById('phoneHighlight').addEventListener('click', copyPhoneNumber);
             
-            // Kontrol zoom gambar
-            document.getElementById('zoomIn').addEventListener('click', () => zoomImage(0.1));
-            document.getElementById('zoomOut').addEventListener('click', () => zoomImage(-0.1));
-            
             // Tutup modal
             document.querySelector('.modal-close').addEventListener('click', closeImageModal);
             document.getElementById('imageModal').addEventListener('click', function(e) {
@@ -1171,90 +1180,50 @@
         // ===============================
         // FUNGSI UTILITAS
         // ===============================
-        function simulateTyping() {
-            const textElement = document.getElementById('typingText');
-            const texts = [
-                "Hi! I'm HanyaRoyan, a prompt engineer",
-                "Hi! I'm HanyaRoyan, a game developer",
-                "Hi! I'm HanyaRoyan, a stupid coder",
-                "Hi! I'm HanyaRoyan, an animator"
+        function animateProfessions() {
+            const professionElement = document.getElementById('professionText');
+            const professions = [
+                "a prompt engineer",
+                "a game developer",
+                "a stupid coder",
+                "an animator"
             ];
             
-            let textIndex = 0;
-            let i = 0;
+            let professionIndex = 0;
+            let charIndex = 0;
             let isDeleting = false;
-            let isPaused = false;
-            let pauseCount = 0;
-            const pauseDuration = 1;
+            let typingSpeed = 60;
             
-            // Variasi kecepatan mengetik untuk efek lebih realistis
-            function getRandomDelay() {
-                const delays = [10, 30, 100, 20, 50, 80, 20];
-                return delays[Math.floor(Math.random() * delays.length)];
-            }
-            
-            // Efek visual mengetik (tanpa glow)
-            function addTypingEffect() {
-            }
-            
-            // Efek backspace yang lebih realistis
-            function addBackspaceEffect() {
+            function type() {
+                const currentProfession = professions[professionIndex];
                 
-            }
-            
-            // Animasi utama dengan multiple texts
-            function typeWriter() {
-                const currentText = texts[textIndex];
-                
-                if (isPaused) {
-                    pauseCount++;
-                    if (pauseCount >= pauseDuration) {
-                        isPaused = false;
-                        pauseCount = 0;
-                    }
-                    setTimeout(typeWriter, 300);
-                    return;
-                }
-                
-                const displayText = currentText.substring(0, i);
-                
-                // Update teks dengan efek warna untuk nama
-                if (displayText.includes('HanyaRoyan')) {
-                    const beforeName = displayText.substring(0, displayText.indexOf('HanyaRoyan'));
-                    const namePart = displayText.substring(displayText.indexOf('HanyaRoyan'), displayText.indexOf('HanyaRoyan') + 10);
-                    const afterName = displayText.substring(displayText.indexOf('HanyaRoyan') + 10);
+                if (!isDeleting) {
+                    // Mengetik profesi baru
+                    professionElement.textContent = currentProfession.substring(0, charIndex);
+                    charIndex++;
                     
-                    textElement.innerHTML = beforeName + 
-                        '<span style="color: var(--light-primary); font-weight: 800;">' + namePart + '</span>' + afterName;
-                } else {
-                    textElement.innerHTML = displayText;
-                }
-                
-                
-                // Efek mengetik dengan variasi kecepatan yang lebih natural
-                if (!isDeleting && i < currentText.length) {
-                    addTypingEffect();
-                    i++;
-                    setTimeout(typeWriter, getRandomDelay());
-                } else if (isDeleting && i > 0) {
-                    addBackspaceEffect();
-                    i--;
-                    setTimeout(typeWriter, 40);
-                } else {
-                    // Pause sebelum mulai menghapus atau mengetik berikutnya
-                    if (!isDeleting) {
-                        isPaused = true;
+                    if (charIndex > currentProfession.length) {
+                        // Jeda setelah selesai mengetik
                         isDeleting = true;
-                        setTimeout(typeWriter, 700);
-                    } else {
-                        isPaused = true;
+                        setTimeout(type, 1500);
+                        return;
+                    }
+                } else {
+                    // Menghapus profesi saat ini
+                    professionElement.textContent = currentProfession.substring(0, charIndex);
+                    charIndex--;
+                    
+                    if (charIndex < 0) {
                         isDeleting = false;
-                        textIndex = (textIndex + 1) % texts.length;
-                        setTimeout(typeWriter, 700);
+                        professionIndex = (professionIndex + 1) % professions.length;
                     }
                 }
+                
+                const speed = isDeleting ? typingSpeed / 2 : typingSpeed;
+                setTimeout(type, speed);
             }
-            typeWriter();
+            
+            type();
         }
 
         function toggleTheme() {
@@ -1316,14 +1285,6 @@
             }, 3000);
         }
 
-        function zoomImage(direction) {
-            const profilePhoto = document.getElementById('profilePhoto');
-            const currentScale = parseFloat(getComputedStyle(profilePhoto).transform.split(',')[3]) || 1;
-            const newScale = Math.max(0.5, Math.min(2, currentScale + direction));
-            
-            profilePhoto.style.transform = `scale(${newScale})`;
-        }
-
         function openImageModal(imgSrc) {
             const modal = document.getElementById('imageModal');
             const modalContent = document.getElementById('modalImageContent');
@@ -1342,6 +1303,3 @@
     </script>
 </body>
 </html>
-
-
-

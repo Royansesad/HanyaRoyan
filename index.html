@@ -1171,8 +1171,13 @@
             });
             
             // Salin nomor telepon
-            document.getElementById('contactBtn').addEventListener('click', copyPhoneNumber);
-            document.getElementById('phoneHighlight').addEventListener('click', copyPhoneNumber);
+            document.getElementById('contactBtn').addEventListener('click', () => {
+                window.open('https://wa.me/6285728760194', '_blank');
+            });
+            document.getElementById('phoneHighlight').addEventListener('click', () => {
+                window.open('https://wa.me/6285728760194', '_blank');
+            });
+
             
             // Tutup modal
             document.querySelector('.modal-close').addEventListener('click', closeImageModal);
@@ -1317,4 +1322,3 @@
     </script>
 </body>
 </html>
-
